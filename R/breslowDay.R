@@ -1,6 +1,6 @@
 #' @importFrom grDevices dev.off jpeg pdf
 #' @importFrom graphics abline legend lines points text
-#' @importFrom stats binomial coefficients cor deviance glm glmer glmnet
+#' @importFrom stats binomial coefficients cor deviance glm
 #' @importFrom stats model.matrix na.omit p.adjust pchisq pnorm
 #' @importFrom stats qchisq qnorm rnorm sd symnum vcov
 #' @importFrom stats mantelhaen.test
@@ -60,9 +60,9 @@ if (is.null(df)==TRUE) stop("wrong value for 'BDstat' argument",call.=FALSE)
  if (BDstat=="BD") STAT<-sum((RES[,1]-RES[,2])^2/RES[,3])
  else STAT<-(sum(RES[,4]*(RES[,1]-RES[,2])))^2/(sum(RES[,4]^2*RES[,3])-(sum(RES[,4]*RES[,3]))^2/sum(RES[,3]))
         res<-rbind(res,c(round(STAT,4),df,round(1-pchisq(STAT,df),4)))
-           } 
+           }
         }
-return(list(res=res,BDstat=BDstat, match = ifelse(match[1] == 
+return(list(res=res,BDstat=BDstat, match = ifelse(match[1] ==
             "score", "score", "matching variable")))
 }
 
